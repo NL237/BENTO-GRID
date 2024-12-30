@@ -21,133 +21,202 @@
       box-sizing: border-box;
     }
     body{
+      min-height: 100vh;
       background-color: rgb(230, 229, 229);
       font-family: 'DM Sans',sans-serif;
-      padding: 10px;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    img{
+      display: block;
+      max-width: 100%;
     }
     .flex{
       display: flex;
-      justify-content: center;
-      align-items: center;
+      place-content: center;
     }
     #global{
-      width: 90%;
-      flex-direction: column;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      gap: 1rem;
+      width: 80vw;
+      height: 90vh; /* Limite la hauteur à l'écran */
+      grid-template-areas: 
+        'box1 box2 box2 box3'
+        'box1 box2 box2 box3'
+        'box1 box2 box2 box3'
+        'box1 box2 box2 box3'
+        'box1 box5 box6 box3'
+        'box4 box5 box6 box3'
+        'box4 box5 box6 box3'
+        'box4 box7 box8 box8'
+        'box4 box7 box8 box8'
+        'box4 box7 box8 box8';
     }
     .box{
       border-radius: 8px;
-      width: 100%;
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
       flex-direction: column;
-      padding: 20px;
+      justify-content: center;
+      text-align: center;
     }
     h3{
-      font-weight: 600;
-      font-size: 1.4em;
       line-height: 1em;
     }
     /*SOCIAL MEDIA*/
-    #socialmedia{background-color: var(--Purple-500);}
+    #socialmedia{
+      background-color: var(--Purple-500);
+      grid-area: box2;
+      align-items: center;
+    }
     #socialmedia h1{
       color: var(--White); 
       text-align: center;
       font-weight: 500;
       margin-bottom: 10px;
+      font-size: 2.2em;
     }
     #socialmedia h1 span{color: var(--Yellow-500);}
-    #socialmedia img{width: 50%;}
+    #socialmedia img{width: 40%;}
     #socialmedia p{color: var(--White); font-weight: 200;}
 
     /*MANAGERMULTI*/
-    #managermulti{background-color: var(--White);}
+    #managermulti{background-color: var(--White); grid-area: box5;}
     #managermulti img{width: 100%; margin-bottom: 8px;}
-    #managermulti h3{color: var(--Black);}
+    #managermulti h3{color: var(--Black); font-size: 1em;}
 
     /*MAINTAIN*/
     #maintain{
       background-color: var(--Yellow-500); 
-      align-items: baseline;
-      padding-bottom: 0;
+      grid-area: box6;
     }
-    #maintain h3{color: var(--Black); margin-bottom: 10px;}
-    #maintain img{width: 70%;}
+    #maintain h3{color: var(--Black); margin-bottom: 1rem; font-size: 1em;}
+    #maintain img{
+      width: 70%;
+      position: relative;
+    }
 
     /*SCHEDULE*/
-    #schedule{background-color: var(--Purple-100);}
-    #schedule h3{margin-bottom: 10px;}
-    #schedule img{width: 100%; margin-bottom: 10px;}
-    #schedule p{text-align: center; font-weight: 500;}
+    #schedule{background-color: var(--Purple-100); grid-area:box3; align-items: flex-start;}
+    #schedule h3{margin-bottom: 10px; font-size: 1em;}
+    #schedule img{width: 100%; margin-bottom: 10px; }
+    #schedule p{font-weight: 500; font-size: .8em;}
 
     /*FOLLOWERS*/
-    #followers{background-color: var(--Purple-500);}
-    #followers img{width: 80%; margin-bottom: 15px;}
+    #followers{
+      background-color: var(--Purple-500);
+      grid-area: box8; 
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #followers img{width: 40%; margin-bottom: 15px;}
     #followers h3{
       text-align: center; 
       color: var(--White); 
-      font-size: 1.6em;
+      font-size: 1.5em;
       font-weight: 300;
     }
 
-    /*AUDIENCE*/
-    #audiance{background-color: var(--White); align-items: flex-start;}
+    /*AUDIANCE*/
+    #audiance{background-color: var(--White); align-items: flex-start; grid-area:box7; }
     #audiance h1{font-size: 2em; margin-bottom: 6px;}
-    #audiance p{margin-bottom: 12px;}
+    #audiance p{margin-bottom: 12px; font-size: .8em;}
     #audiance img{width: 55%;}
     
     /*CREATEPOST*/
-    #createpost{background-color: var(--Yellow-100); align-items: flex-start;}
+    #createpost{background-color: var(--Yellow-100); align-items: flex-start; grid-area: box1;}
     #createpost h3{font-size: 1.6em; font-weight: 600; margin-bottom: 18px;}
     #createpost h3 span{color: var(--Purple-500);}
     #createpost img{width: 60%;}
 
     /*USINGAI*/
-    #usingai{background-color: var(--Yellow-500); align-items: flex-start;}
-    #usingai h3{color: var(--Black); font-size: 1.6em; font-weight: 600; margin-bottom: 18px;}
+    #usingai{background-color: var(--Yellow-500); justify-content: flex-start; grid-area: box4;}
+    #usingai h3{color: var(--Black); font-size: 1.8em; font-weight: 600; margin-bottom: 18px;}
     #usingai img{width: 70%;}
+
+    /*MEDIA QUERIES*/
+    @media screen and (max-width:1024px) {
+      #global{
+        grid-auto-rows: initial;
+        grid-template-areas: 
+        'box1 box1 box2 box2'
+        'box1 box1 box2 box2'
+        'box3 box3 box4 box4'
+        'box3 box3 box4 box4'
+        'box5 box5 box6 box6'
+        'box5 box5 box6 box6'
+        'box7 box7 box8 box8'
+        'box7 box7 box8 box8';
+      }
+    }
+    @media screen and (max-width:768px) {
+      #global .box{
+        text-align: center;
+      }
+      #global{
+        grid-template-columns: 1fr;
+        grid-auto-rows: initial;
+        grid-template-areas: 
+        'box2'
+        'box5'
+        'box6'
+        'box3'
+        'box8'
+        'box7'
+        'box1'
+        'box4';
+      }
+    }
+
   </style>
 </head>
 <body class="flex">
   <div id="global"  class="flex">
 
-    <div id="socialmedia" class="flex box">
+    <div id="socialmedia" class="flex box box2">
       <h1>Social Media <span>10x</span> <em>Faster</em> with AI</h1>
       <img src="assets/images/illustration-five-stars.webp" alt="">
       <p>Over 4,000 5-star reviews</p>
     </div>
 
-    <div id="managermulti"  class="flex box">
+    <div id="managermulti"  class="flex box box5">
       <img src="assets/images/illustration-multiple-platforms.webp" alt="">
       <h3>Manage multiple accounts and platforms.</h3>
     </div>
 
-    <div id="maintain"  class="flex box">
+    <div id="maintain"  class="flex box box6">
       <h3>Maintain a consistent posting schedule.</h3>
       <img src="assets/images/illustration-consistent-schedule.webp" alt="">
     </div>
 
-    <div id="schedule"  class="flex box">
+    <div id="schedule"  class="flex box box3">
       <h3>Schedule to social media.</h3>
       <img src="assets/images/illustration-schedule-posts.webp" alt="">
       <p>Optimize post timings to publish content at the perfect time for your audience.</p>
     </div>
 
-    <div id="followers" class="flex box">
+    <div id="followers" class="flex box box8">
       <img src="assets/images/illustration-grow-followers.webp" alt="">
       <h3>Grow followers with non-stop content.</h3>
     </div>
 
-    <div id="audiance" class="flex box">
+    <div id="audiance" class="flex box box8">
       <h1>>56%</h1>
       <p>faster audience growth</p>
       <img src="assets/images/illustration-audience-growth.webp" alt="">
     </div>
 
-    <div id="createpost" class="flex box">
+    <div id="createpost" class="flex box box1">
       <h3>Create and schedule content <span><em>quicker.</em></span></h3>
       <img src="assets/images/illustration-create-post.webp" alt="">
     </div>
 
-    <div id="usingai" class="flex box">
+    <div id="usingai" class="flex box box4">
       <h3>Write your content using AI.</h3>
       <img src="assets/images/illustration-ai-content.webp" alt="">
     </div>
